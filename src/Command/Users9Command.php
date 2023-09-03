@@ -10,14 +10,13 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 #[AsCommand(
-    name: 'app:users',
+    name: 'app:users9',
     description: 'Add a short description for your command',
 )]
-class UsersCommand extends Command
+class Users9Command extends Command
 {
     protected function configure(): void
     {
@@ -41,6 +40,7 @@ class UsersCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $users = $this->userRepository->findAll();
+        $users = array_slice($users, 80000,10000);
 
         foreach ($users as $user) {
             $userId = $user->getId();

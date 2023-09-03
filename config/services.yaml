@@ -6,6 +6,12 @@
 parameters:
 
 services:
+    App\Command\Users1Command:
+        arguments:
+            $messageBus: '@messenger.bus.async'
+            $userRepository: '@doctrine.orm.default_entity_manager'
+        tags:
+            - 'console.command'
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
